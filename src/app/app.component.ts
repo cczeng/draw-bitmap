@@ -60,10 +60,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.form.setValue({
       dot: 1,
-      width: 24,
+      width: 100,
       height: 30,
       fileName: 'bitmap',
-      dotWidth: 4
+      dotWidth: 10
     });
     this.changeBitMap();
   }

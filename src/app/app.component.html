@@ -32,6 +32,15 @@
 
 
       <div class="row align-items-center">
+        <div class="col-3 text-right">点的大小:</div>
+        <div class="col-9">
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" formControlName="dotWidth">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
         <div class="col-3 text-right">下载文件名:</div>
         <div class="col-9">
           <mat-form-field class="example-full-width">
@@ -48,6 +57,10 @@
           <button type="button" (click)="download()" mat-raised-button color="primary">下载</button>
         </div>
       </div>
+
+      <div class="row" class="text-center my-2">
+        <p >按住shift点击两个点可多选</p>
+      </div>
     </div>
   </form>
 </div>
@@ -57,7 +70,7 @@
     <ng-container *ngFor="let row of bitmap;index as rowIdx;">
       <div class="row" [ngClass]="{ 'last-row': rowIdx % (dot * dotBit) === (dot * dotBit)-1 }">
         <ng-container *ngFor="let dot of row;index as dotIdx">
-          <span class="dot" [ngClass]="{ 'selected': dot }" (click)="checke(rowIdx, dotIdx)"></span>
+          <span class="dot" [ngStyle]="{ width: dotWidth, height: dotWidth }" [ngClass]="{ 'selected': dot }" (click)="checke(rowIdx, dotIdx)"></span>
         </ng-container>
       </div>
     </ng-container>

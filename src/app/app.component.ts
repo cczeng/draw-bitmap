@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   dotBit: number = 8;
   dot = 1;
 
+  dotWidth: string = '4px';
+
   dotZoom: string = '1x';
 
   formValue = {};
@@ -21,7 +23,8 @@ export class AppComponent implements OnInit {
     dot: new FormControl(),
     width: new FormControl(),
     height: new FormControl(),
-    fileName: new FormControl()
+    fileName: new FormControl(),
+    dotWidth: new FormControl(),
   })
 
   bitmap: Array<Array<Number>> = [];
@@ -57,9 +60,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.form.setValue({
       dot: 1,
-      width: 240,
-      height: 300,
-      fileName: 'bitmap'
+      width: 24,
+      height: 30,
+      fileName: 'bitmap',
+      dotWidth: 4
     });
     this.changeBitMap();
   }
@@ -68,6 +72,8 @@ export class AppComponent implements OnInit {
   changeBitMap() {
     const values = this.form.value;
     this.dot = values.dot;
+
+    this.dotWidth = values.dotWidth + 'px';
 
     if (this.formValue['width'] !== values.width || this.formValue['height'] !== values.height) {
       this.bitmap = Array.from({ length: values.height }, (cur, idx) => {

@@ -24,7 +24,8 @@
 
     $border: 1px solid #ccc;
 
-    $width: 10px;
+    // 如果需要很大的图片则把这个宽度调小，否则 dot 总数累加之后会超过屏幕宽度
+    $width: 2px;
 
 
     .row {
@@ -41,7 +42,7 @@
       }
 
       &.last-row {
-        margin-bottom: $width;
+        margin-bottom: 10px;
         border-bottom: $border;
       }
 
